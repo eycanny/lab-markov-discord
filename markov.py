@@ -65,9 +65,9 @@ filenames = sys.argv[1:]
 text = open_and_read_file(filenames)
 
 # Get a Markov chain
-chains = make_chains(text)
+# chains = make_chains(text)
 
-markov_text = make_text(chains)
+# markov_text = make_text(chains)
 
 client = discord.Client()
 
@@ -86,7 +86,7 @@ async def on_message(message):
         await message.channel.send('I am working!')
 
     elif message.content.startswith('$markov'):
-        await message.channel.send(markov_text)
+        await message.channel.send(make_text(make_chains(text)))
 
 
 client.run(os.environ['DISCORD_TOKEN'])
